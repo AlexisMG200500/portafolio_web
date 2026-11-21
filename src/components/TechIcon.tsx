@@ -13,20 +13,37 @@
  */
 import type { CSSProperties } from 'react'
 import {
+  siAxios,
   siBootstrap,
+  siClaude,
   siCss,
   siDocker,
+  siExpo,
+  siExpress,
   siGit,
   siGithub,
+  siGooglegemini,
+  siGooglecloudstorage,
+  siGooglemaps,
   siHtml5,
   siJavascript,
   siLaravel,
   siMysql,
+  siNestjs,
   siNginx,
+  siNodedotjs,
+  siNpm,
   siPhp,
+  siPnpm,
+  siPostman,
   siReact,
+  siReactquery,
+  siRedis,
+  siSwagger,
   siTailwindcss,
+  siThreedotjs,
   siTypescript,
+  siVercel,
   siAngular,
 } from 'simple-icons'
 
@@ -40,6 +57,24 @@ const ICONS: Record<string, Logo> = {
   // El logo nuevo de Angular es casi negro; usamos su rojo clásico para que se vea en oscuro
   Angular: { ...siAngular, hex: 'DD0031' },
   React: siReact,
+  'React Native': siReact, // mismo logo que React
+  Express: { ...siExpress, hex: '' }, // negro: mejor usar el color del texto
+  Redis: siRedis,
+  Expo: { ...siExpo, hex: '' }, // casi negro: usamos el color del texto
+  'Node.js': siNodedotjs,
+  NestJS: siNestjs,
+  Axios: siAxios,
+  'React Query': siReactquery,
+  'Google Maps': siGooglemaps,
+  'Google Cloud Storage': siGooglecloudstorage,
+  Vercel: { ...siVercel, hex: '' }, // negro: usamos el color del texto
+  Postman: siPostman,
+  'Three.js': { ...siThreedotjs, hex: '' }, // negro: usamos el color del texto
+  Claude: siClaude,
+  Gemini: siGooglegemini,
+  Swagger: siSwagger,
+  npm: siNpm,
+  pnpm: siPnpm,
   MySQL: siMysql,
   HTML: siHtml5,
   CSS: siCss,
@@ -52,13 +87,20 @@ const ICONS: Record<string, Logo> = {
 }
 
 /*
- * Iconos genéricos (trazo) para tecnologías sin logo en Simple Icons.
- * SQL Server no está (Microsoft pidió retirar sus marcas) y Motion tampoco.
+ * Logos a todo color como archivos SVG en public/icons/.
+ * SQL Server, Azure y Codex (OpenAI) no están en Simple Icons, así que vienen
+ * de go-skill-icons.vercel.app (sin el cuadro de fondo).
+ * 👉 Para añadir otro: descarga https://go-skill-icons.vercel.app/api/icons?i=NOMBRE,
+ *    guárdalo en public/icons/ y añádelo aquí.
  */
+const IMAGES: Record<string, string> = {
+  'SQL Server': '/icons/sqlserver.svg',
+  Azure: '/icons/azure.svg',
+  Codex: '/icons/codex.svg',
+}
+
+/* Iconos genéricos (trazo) para tecnologías sin ningún logo. */
 const FALLBACKS: Record<string, string> = {
-  // cilindro de base de datos
-  'SQL Server':
-    'M12 3c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3Zm8 3v12c0 1.7-3.6 3-8 3s-8-1.3-8-3V6m16 6c0 1.7-3.6 3-8 3s-8-1.3-8-3',
   // curva de animación
   Motion: 'M3 18c4 0 5-12 9-12s5 12 9 12',
 }
@@ -89,6 +131,23 @@ export function TechIcon({ name, size = 14, colored = false }: TechIconProps) {
           <path d={logo.path} />
         </svg>
       </span>
+    )
+  }
+
+  const image = IMAGES[name]
+  if (image) {
+    // Ya vienen a color; en modo "gris" se atenúan y se encienden en hover
+    return (
+      <img
+        src={image}
+        alt=""
+        width={size}
+        height={size}
+        loading="lazy"
+        className={`shrink-0 transition-[filter,opacity] duration-300 ${
+          colored ? '' : 'opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0'
+        }`}
+      />
     )
   }
 

@@ -27,12 +27,6 @@ export const wordUp: Variants = {
   show: { y: 0, transition: { duration: 0.9, ease } },
 }
 
-/** Línea fina que se "dibuja" de izquierda a derecha (usa origin-left). */
-export const drawLine: Variants = {
-  hidden: { scaleX: 0 },
-  show: { scaleX: 1, transition: { duration: 1.1, ease } },
-}
-
 /** Contenedor que anima a sus hijos uno detrás de otro (efecto cascada). */
 export const stagger = (staggerChildren = 0.08, delayChildren = 0): Variants => ({
   hidden: {},

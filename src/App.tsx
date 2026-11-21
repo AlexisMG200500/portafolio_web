@@ -1,13 +1,23 @@
 import { AnimatePresence, MotionConfig, useReducedMotion } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
+import { Header } from './components/Header'
 import { Loader } from './components/Loader'
-import { Navbar } from './components/Navbar'
 import { About } from './sections/About'
 import { Contact } from './sections/Contact'
 import { Experience } from './sections/Experience'
 import { Hero } from './sections/Hero'
 import { Projects } from './sections/Projects'
 import { Skills } from './sections/Skills'
+
+/*
+ * La escena 3D (Three.js) se descarga en un archivo aparte. Empezamos a
+ * pedirla YA (no cuando React la monte) para que esté lista al terminar
+ * el loader, pero sin bloquear la carga del resto de la página.
+ */
+// Si el archivo no llega a descargarse (red caída, deploy nuevo…), la página
+// sigue funcionando sin el fondo 3D en lugar de quedarse en blanco.
+const scene3d: Promise<{ default: () => ReactNode }> = import('./components/Scene3D').catch(() => ({ default: () => null }))
+const Scene3D = lazy(() => scene3d)
 
 /*
  * ─── DURACIÓN DEL LOADER ───────────────────────────────────────────────────
@@ -53,7 +63,12 @@ export default function App() {
         Saltar al contenido
       </a>
 
-      <Navbar ready={ready} />
+      {/* Escena 3D fija detrás de toda la página */}
+      <Suspense fallback={null}>
+        <Scene3D />
+      </Suspense>
+
+      <Header ready={ready} />
       <main aria-busy={!ready}>
         <Hero ready={ready} />
         <About />

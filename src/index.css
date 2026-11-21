@@ -48,11 +48,21 @@
   --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
+/* Cinta infinita de logos (Hero). Se pausa al pasar el ratón. */
+@theme {
+  --animate-marquee: marquee 70s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Deja espacio para la navbar fija al saltar a una sección con #ancla */
-    scroll-padding-top: 5rem;
+    /* Pequeño margen arriba al saltar a una sección con #ancla */
+    scroll-padding-top: 4.5rem; /* altura de la barra superior */
     color-scheme: light;
   }
   html.dark {
@@ -83,6 +93,15 @@
   }
 }
 
+/*
+ * Contorno difuso del color del fondo alrededor de las letras: separa el
+ * texto de las partículas 3D sin tapar la escena. Funciona con ambos temas
+ * y también con texto en degradado (bg-clip-text), porque es un `filter`.
+ */
+@utility text-halo {
+  filter: drop-shadow(0 0 2px var(--bg)) drop-shadow(0 0 8px var(--bg));
+}
+
 /* Textura sutil de cuadrícula para el fondo del Hero */
 @utility bg-grid {
   background-image:
@@ -91,3 +110,4 @@
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
 }
+

@@ -1,5 +1,5 @@
 /*
- * Orbes de luz difuminados para los FONDOS (Hero y Contacto).
+ * Orbes de luz difuminados para los FONDOS (panel de perfil y loader).
  * Son decorativos: cada orbe gira sobre un "brazo" (rotate = transform,
  * barato) y pulsa con scale. El blur del contenedor les da aspecto de luz.
  *

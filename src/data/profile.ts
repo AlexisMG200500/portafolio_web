@@ -12,12 +12,16 @@ export const profile = {
   name: 'Alexis Morales Gómez',
   role: 'Desarrollador Web Junior',
   location: 'México',
-  available: true, // muestra "Disponible para trabajar" en el Hero
+  timeZone: 'America/Mexico_City', // para el reloj en vivo del inicio
+  available: true, // muestra el badge "Disponible" en el panel de perfil
   tagline:
-    'Ingeniero en Desarrollo y Gestión de Software. Construyo aplicaciones web completas: del backend con Laravel y SQL a interfaces cuidadas con Angular y React.',
+    'Ingeniero en Desarrollo y Gestión de Software. Construyo aplicaciones web y móviles completas: del backend con Laravel, Node.js, Express y NestJS sobre SQL, a interfaces cuidadas con Angular, React y React Native.',
   email: 'alexis.morgomez20@gmail.com',
+  phoneDisplay: '+52 729 143 6499', // cómo se muestra el número de WhatsApp
   links: {
-    github: 'https://github.com/Alexis200500',
+    github: 'https://github.com/AlexisMG200500',
+    // WhatsApp: 52 = lada de México + tu número. `text` es el mensaje que aparece ya escrito.
+    whatsapp: 'https://wa.me/527291436499?text=' + encodeURIComponent('Hola Alexis, vi tu portafolio y me gustaría platicar contigo.'),
     linkedin: 'https://www.linkedin.com/in/alexis-morales-g%C3%B3mez-b23141239/',
     cv: 'https://drive.google.com/file/d/1dwkM3GtKL81eb5F749lm-s1N2071CX8r/view?usp=sharing', // REVISA: ¿CV actualizado?
   },
@@ -139,9 +143,36 @@ export const projects: Project[] = [
   },
 ]
 
+/*
+ * Habilidades por categoría. El nombre de cada una debe coincidir con
+ * el de TechIcon.tsx para que salga su logo.
+
+ */
 export const skills: { category: string; items: string[] }[] = [
-  { category: 'Lenguajes y frameworks', items: ['PHP', 'Laravel', 'JavaScript', 'TypeScript', 'Angular', 'React'] },
-  { category: 'Bases de datos', items: ['MySQL', 'SQL Server'] },
-  { category: 'UI y animación', items: ['HTML', 'CSS', 'Bootstrap', 'Tailwind CSS', 'Motion'] },
-  { category: 'Herramientas', items: ['Git', 'GitHub', 'Docker', 'Nginx'] },
+  { category: 'Lenguajes', items: ['JavaScript', 'TypeScript', 'PHP'] },
+  {
+    category: 'Frontend y móvil',
+    items: ['React', 'React Native', 'Expo', 'Angular', 'React Query', 'Axios'],
+  },
+  {
+    category: 'Cloud y servicios',
+    items: ['Azure', 'Google Cloud Storage', 'Google Maps', 'Vercel', 'Docker', 'Nginx'],
+  },
+  { category: 'Backend', items: ['Node.js', 'Express', 'NestJS', 'Laravel'] },
+  { category: 'Bases de datos', items: ['MySQL', 'SQL Server', 'Redis'] },
+  { category: 'UI y animación', items: ['HTML', 'CSS', 'Bootstrap', 'Tailwind CSS', 'Motion', 'Three.js'] },
+  { category: 'Herramientas', items: ['Git', 'GitHub', 'Postman', 'Swagger', 'npm', 'pnpm'] },
+  { category: 'Desarrollo asistido por IA', items: ['Claude', 'Codex', 'Gemini'] },
 ]
+
+/* Secciones del sitio (navegación lateral y menú móvil) */
+export const nav = [
+  { id: 'sobre-mi', label: 'Sobre mí' },
+  { id: 'experiencia', label: 'Experiencia' },
+  { id: 'proyectos', label: 'Proyectos' },
+  { id: 'habilidades', label: 'Habilidades' },
+  { id: 'contacto', label: 'Contacto' },
+]
+
+/* Tecnologías que se muestran como "stack principal" en el panel lateral */
+export const mainStack = ['Laravel', 'Angular', 'React', 'Node.js', 'SQL Server', 'Azure']
