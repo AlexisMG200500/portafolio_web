@@ -71,7 +71,7 @@ export function Experience() {
       <motion.div variants={stagger(0.1)} {...inView} className="grid gap-4 md:grid-cols-3">
         <JobTile job={currentJob} current />
 
-        <Tile className="flex flex-col gap-6 p-6 md:row-span-2">
+        <Tile className="flex flex-col gap-6 p-6 max-md:order-1 md:row-span-2">
           <TileLabel>Formación</TileLabel>
           <ol className="relative space-y-6 border-l border-line pl-5">
             {education.map((ed) => (
@@ -89,7 +89,7 @@ export function Experience() {
           <JobTile key={job.company} job={job} current={false} />
         ))}
 
-        <Tile className="border-dashed p-0">
+        <Tile className="border-dashed p-0 max-md:order-2">
           <a href="#contacto" className="group flex h-full flex-col justify-between gap-6 p-6">
             <TileLabel>Siguiente paso</TileLabel>
             <div>
