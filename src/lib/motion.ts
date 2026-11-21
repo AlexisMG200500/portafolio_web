@@ -1,6 +1,5 @@
 import type { Transition, Variants } from 'motion/react'
 
-
 export const ease = [0.22, 1, 0.36, 1] as const
 
 export const spring: Transition = { type: 'spring', stiffness: 400, damping: 28 }
@@ -23,5 +22,5 @@ export const stagger = (staggerChildren = 0.08, delayChildren = 0): Variants => 
 export const inView = {
   initial: 'hidden',
   whileInView: 'show',
-  viewport: { once: true, amount: 0.2 },
+  viewport: { once: true, amount: 'some', margin: '0px 0px -10% 0px' },
 } as const
