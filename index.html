@@ -1,10 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alexis Morales</title>
+    <title>Alexis Morales Gómez · Desarrollador Web</title>
+    <meta
+      name="description"
+      content="Portafolio de Alexis Morales Gómez, desarrollador web junior: Laravel, Angular, React y SQL."
+    />
+    <meta name="theme-color" content="#0a0a0b" />
+
+    <!-- Open Graph: cómo se ve el enlace al compartirlo en LinkedIn / WhatsApp -->
+    <meta property="og:title" content="Alexis Morales Gómez · Desarrollador Web" />
+    <meta property="og:description" content="Desarrollador web junior: Laravel, Angular, React y SQL." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexismoralesgomez.com" />
+
+    <!-- Fuentes: Geist (texto) y Geist Mono (detalles técnicos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Aplica el tema guardado ANTES de pintar, para evitar el "parpadeo".
+      Por defecto: oscuro. Usamos las clases .dark / .light porque el loader
+      Thinking Orbs las lee para elegir el color de sus puntos.
+    -->
+    <script>
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.replace('dark', 'light')
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
