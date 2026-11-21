@@ -1,12 +1,3 @@
-/*
- * ─── TARJETA CON INCLINACIÓN 3D ────────────────────────────────────────────
- * Se inclina siguiendo al ratón (rotateX / rotateY con perspectiva) y un
- * brillo sigue al cursor. Usa "motion values": cambian sin re-renderizar
- * React, así que es fluido incluso con muchas tarjetas.
- *
- * useSpring suaviza el movimiento (efecto muelle) y al salir el ratón la
- * tarjeta vuelve a su sitio. Con "reducir movimiento" no se inclina.
- */
 import { motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring, useTransform, type HTMLMotionProps } from 'motion/react'
 import type { MouseEvent, ReactNode } from 'react'
 
@@ -14,7 +5,6 @@ type TiltCardProps = Omit<HTMLMotionProps<'article'>, 'children'> & { children?:
 
 export function TiltCard({ children, className = '', max = 8, style, ...props }: TiltCardProps) {
   const reduce = useReducedMotion()
-  // Posición del ratón dentro de la tarjeta, de 0 a 1
   const px = useMotionValue(0.5)
   const py = useMotionValue(0.5)
   const springCfg = { stiffness: 220, damping: 22 }

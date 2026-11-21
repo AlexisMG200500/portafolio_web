@@ -1,8 +1,3 @@
-/*
- * Iconos SVG en línea (sin dependencias extra).
- * Heredan el color del texto con `currentColor`, así que cambian solos con
- * el tema. Son decorativos (aria-hidden): el texto accesible lo pone el botón.
- */
 import type { SVGProps } from 'react'
 
 type IconProps = SVGProps<SVGSVGElement>

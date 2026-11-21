@@ -1,20 +1,3 @@
-/*
- * ─── LOADER CON THINKING ORBS ──────────────────────────────────────────────
- * Usa el paquete original de libraries.dev/orbs: `thinking-orbs` (MIT,
- * de Jakub Antalik). Es un <canvas> 2D con una esfera de puntos animada.
- *
- *   npm install thinking-orbs
- *   <ThinkingOrb state="working" size={64} />
- *
- * 👉 Para adaptarlo:
- *   - `state`: prueba 'searching', 'weaving', 'connecting', 'breathing'…
- *     (9 animaciones distintas, ver libraries.dev/orbs)
- *   - `color`: tiñe los puntos. Aquí usamos el azul del acento.
- *   - El tiempo que dura el loader se controla en App.tsx (MIN_MS / MAX_MS).
- *
- * Accesibilidad: role="status" + texto oculto; el orbe ya respeta
- * prefers-reduced-motion por sí mismo (muestra un fotograma quieto).
- */
 import { motion } from 'motion/react'
 import { ThinkingOrb } from 'thinking-orbs'
 import { profile } from '../data/profile'
@@ -31,13 +14,11 @@ export function Loader() {
     >
       <span className="sr-only">Cargando portafolio…</span>
 
-      {/* Resplandor suave detrás del orbe */}
       <div className="pointer-events-none absolute opacity-25 blur-2xl" aria-hidden>
         <GlowOrbs scale={1.6} />
       </div>
 
       <div className="relative flex flex-col items-center gap-8" aria-hidden>
-        {/* El canvas mide 64px; lo escalamos ×2 con transform (no afecta al layout) */}
         <div className="grid size-32 place-items-center">
           <ThinkingOrb state="working" size={64} color="#4f8dff" style={{ transform: 'scale(2)' }} />
         </div>

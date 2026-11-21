@@ -1,12 +1,3 @@
-/*
- * ─── BARRA DE NAVEGACIÓN ───────────────────────────────────────────────────
- * - Transparente sobre la portada; al bajar 40px se vuelve sólida con blur
- *   (useScroll + useMotionValueEvent de Motion).
- * - Escritorio: enlaces con una línea bajo la sección activa que se desliza
- *   entre enlaces (layoutId).
- * - Móvil/tablet: botón que abre un menú a pantalla completa.
- *   Accesible: aria-expanded, se cierra con Escape y al elegir un enlace.
- */
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { nav, profile } from '../data/profile'
@@ -15,7 +6,6 @@ import { ease, fadeUp, spring, stagger } from '../lib/motion'
 import { MenuIcon, PlusIcon } from './icons'
 import { ThemeToggle } from './ThemeToggle'
 
-// 'inicio' incluido para que en la portada no se marque ninguna sección
 const SPY_IDS = ['inicio', ...nav.map((n) => n.id)]
 
 export function Header({ ready }: { ready: boolean }) {
@@ -25,7 +15,6 @@ export function Header({ ready }: { ready: boolean }) {
   const { scrollY } = useScroll()
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 40))
 
-  // Menú móvil: Escape para cerrar y bloquear el scroll del fondo
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)

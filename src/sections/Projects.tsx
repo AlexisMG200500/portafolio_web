@@ -1,9 +1,3 @@
-/*
- * ─── PROYECTOS ─────────────────────────────────────────────────────────────
- * Tarjetas de cristal que se inclinan en 3D con el ratón (TiltCard).
- * Filtros por tecnología: la "píldora" se desliza entre botones (layoutId)
- * y las tarjetas se recolocan animadas (layout + AnimatePresence).
- */
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { ArrowUpRightIcon, CodeIcon } from '../components/icons'
@@ -15,7 +9,6 @@ import { ButtonLink } from '../components/ui/Button'
 import { projects } from '../data/profile'
 import { ease, fadeUp, inView, spring } from '../lib/motion'
 
-/* Filtros generados a partir de la primera tecnología de cada proyecto */
 const FILTERS = ['Todos', ...new Set(projects.map((p) => p.stack[0]))]
 
 export function Projects() {
@@ -60,7 +53,6 @@ export function Projects() {
                   transition={{ duration: 0.4, ease }}
                   className="flex flex-col"
                 >
-                  {/* "Pantalla" superior con los logos del stack */}
                   <div className="relative flex h-36 items-center justify-center gap-3 border-b border-line bg-bg/40" aria-hidden>
                     <span className="absolute top-4 left-5 font-mono text-xs text-muted">{String(number).padStart(2, '0')}</span>
                     {p.stack.slice(0, 3).map((t, i) => (

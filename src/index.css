@@ -1,31 +1,14 @@
 @import 'tailwindcss';
 
-/*
- * ─── TEMA ────────────────────────────────────────────────────────────────
- * Los colores viven en variables CSS. Así el modo claro/oscuro solo cambia
- * los valores, y en los componentes usas siempre las mismas clases:
- *   bg-bg, text-fg, text-muted, bg-card, border-line, text-accent…
- *
- * 👉 Para cambiar el color de acento de todo el sitio, edita --accent.
- */
-
-/* `dark:` se activa cuando <html> tiene la clase .dark (no por el sistema) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/*
- * Tema claro "papel": fondo gris cálido en vez de blanco puro para no
- * deslumbrar. Texto casi negro suavizado y acentos algo más oscuros para
- * mantener buen contraste (WCAG AA) sobre el fondo claro.
- */
 :root {
   --bg: #ebe8e1;
   --fg: #111014;
   --muted: #33313a;
   --card: #f4f2ed;
   --line: #d6d2c8;
-  --accent: #1d4ed8; /* azul */
-  --accent-2: #0a7363; /* verde azulado */
-  --accent-fg: #ffffff;
+  --accent: #1d4ed8;  --accent-2: #0a7363;  --accent-fg: #ffffff;
 }
 
 .dark {
@@ -34,8 +17,7 @@
   --muted: #a9a9b4;
   --card: #121215;
   --line: #24242a;
-  --accent: #4f8dff; /* azul */
-  --accent-2: #3ddbc0;
+  --accent: #4f8dff;  --accent-2: #3ddbc0;
   --accent-fg: #0a0a0b;
 }
 
@@ -53,7 +35,6 @@
   --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
-/* Cinta infinita de logos (Hero). Se pausa al pasar el ratón. */
 @theme {
   --animate-marquee: marquee 70s linear infinite;
   @keyframes marquee {
@@ -66,9 +47,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Pequeño margen arriba al saltar a una sección con #ancla */
-    scroll-padding-top: 4.5rem; /* altura de la barra superior */
-    color-scheme: light;
+    scroll-padding-top: 4.5rem;    color-scheme: light;
   }
   html.dark {
     color-scheme: dark;
@@ -79,20 +58,17 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Selección sólida: fondo azul y texto con contraste, sin mezclas */
   ::selection {
     background: var(--accent);
     color: var(--accent-fg);
   }
 
-  /* Foco visible y consistente para navegación con teclado (accesibilidad) */
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 6px;
   }
 
-  /* Si el usuario pidió menos movimiento, quitamos el scroll suave también */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -100,16 +76,10 @@
   }
 }
 
-/*
- * Contorno difuso del color del fondo alrededor de las letras: separa el
- * texto de las partículas 3D sin tapar la escena. Funciona con ambos temas
- * y también con texto en degradado (bg-clip-text), porque es un `filter`.
- */
 @utility text-halo {
   filter: drop-shadow(0 0 1px var(--bg)) drop-shadow(0 0 3px var(--bg)) drop-shadow(0 0 10px var(--bg));
 }
 
-/* Textura sutil de cuadrícula para el fondo del Hero */
 @utility bg-grid {
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),

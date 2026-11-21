@@ -3,7 +3,6 @@ import { spring } from '../lib/motion'
 import { useTheme } from '../lib/useTheme'
 import { MoonIcon, SunIcon } from './icons'
 
-/** Botón claro/oscuro: el icono gira al cambiar. */
 export function ThemeToggle({ className = '' }: { className?: string }) {
   const { theme, toggle } = useTheme()
 

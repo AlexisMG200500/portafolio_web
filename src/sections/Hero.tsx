@@ -1,10 +1,3 @@
-/*
- * ─── PORTADA ───────────────────────────────────────────────────────────────
- * Pantalla completa con tu nombre gigante ENCIMA de la escena 3D
- * (Scene3D.tsx, que está fija detrás de toda la página).
- * El nombre aparece palabra por palabra desde detrás de una "máscara".
- * Su animación arranca cuando `ready` es true (cuando se va el loader).
- */
 import { motion } from 'motion/react'
 import { ArrowDownIcon } from '../components/icons'
 import { TechIcon } from '../components/TechIcon'
@@ -14,7 +7,6 @@ import { mainStack, profile } from '../data/profile'
 import { fadeUp, stagger, wordUp } from '../lib/motion'
 
 export function Hero({ ready }: { ready: boolean }) {
-  // Logos estilo go-skill-icons (public/icons/social/)
   const socials = [
     { href: profile.links.github, label: 'GitHub', icon: '/icons/social/github.svg' },
     { href: profile.links.linkedin, label: 'LinkedIn', icon: '/icons/social/linkedin.svg' },
@@ -26,7 +18,6 @@ export function Hero({ ready }: { ready: boolean }) {
 
   return (
     <section id="inicio" className="relative flex min-h-svh flex-col items-center justify-center px-5 pt-20 pb-24 text-center">
-      {/* Halo suave detrás del texto para que se lea bien sobre las partículas */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_38%_at_50%_50%,var(--bg)_30%,transparent_100%)] opacity-85" aria-hidden />
 
       <motion.div variants={stagger(0.1, 0.1)} initial="hidden" animate={ready ? 'show' : 'hidden'} className="flex flex-col items-center">
@@ -40,7 +31,6 @@ export function Hero({ ready }: { ready: boolean }) {
           <span className="sr-only">{profile.name}</span>
           <motion.span variants={stagger(0.08)} aria-hidden className="flex flex-wrap justify-center gap-x-[0.22em]">
             {words.map((w, i) => (
-              // pb/-mb: deja sitio a las letras con rabito (g, j…) dentro de la máscara
               <span key={w} className="-mb-[0.1em] inline-block overflow-hidden pb-[0.1em]">
                 <motion.span
                   variants={wordUp}
@@ -89,7 +79,6 @@ export function Hero({ ready }: { ready: boolean }) {
         </motion.ul>
       </motion.div>
 
-      {/* Indicador de scroll: ratón con un punto que baja */}
       <motion.a
         href="#sobre-mi"
         aria-label="Bajar a Sobre mí"

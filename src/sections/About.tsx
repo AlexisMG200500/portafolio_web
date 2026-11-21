@@ -1,17 +1,3 @@
-/*
- * ─── SOBRE MÍ ──────────────────────────────────────────────────────────────
- * Diseño editorial, sin paneles: texto suelto a la izquierda y la foto grande
- * a la derecha (justo donde pasa el anillo 3D de esta sección, así el texto
- * queda sobre fondo limpio).
- *
- *   Texto grande                    ┌──────────────┐
- *   Párrafos                        │              │
- *   ( ✓ chip ) ( ✓ chip ) …         │     FOTO     │
- *   ▎ "Qué busco"                   │ ┌──────────┐ │
- *                                   └─│ 3 años … │─┘  ← etiqueta flotante
- *
- * En móvil la foto va arriba.
- */
 import { motion } from 'motion/react'
 import { CheckIcon } from '../components/icons'
 import { Section } from '../components/Section'
@@ -29,7 +15,6 @@ export function About() {
         {...inView}
         className="grid items-center gap-12 px-2 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:gap-10 lg:gap-16"
       >
-        {/* ── Texto ── */}
         <div className="text-halo flex min-w-0 flex-col gap-6">
           <motion.p variants={fadeUp} className="text-2xl leading-snug font-medium tracking-tight text-balance lg:text-[1.75rem]">
             {about.statement}
@@ -43,7 +28,6 @@ export function About() {
             ))}
           </motion.div>
 
-          {/* Cómo trabajo, en chips */}
           <motion.div variants={fadeUp} className="flex flex-col gap-3">
             <p className="font-mono text-[11px] tracking-widest text-muted uppercase">Cómo trabajo</p>
             <ul className="flex flex-wrap gap-2">
@@ -61,20 +45,16 @@ export function About() {
             </ul>
           </motion.div>
 
-          {/* Qué busco */}
           <motion.blockquote variants={fadeUp} className="flex flex-col gap-2 border-l-2 border-accent pl-5">
             <p className="font-mono text-[11px] tracking-widest text-accent uppercase">Qué busco</p>
             <p className="text-lg leading-snug font-medium text-pretty">“{about.lookingFor}”</p>
           </motion.blockquote>
         </div>
 
-        {/* ── Foto ── */}
-        {/* En escritorio la altura de la foto se limita al alto de la pantalla, para que todo quepa */}
         <motion.figure
           variants={fadeUp}
           className="relative order-first mx-auto w-full max-w-sm md:order-last md:w-auto md:max-w-none md:justify-self-center"
         >
-          {/* Resplandor de color detrás de la foto */}
           <div
             aria-hidden
             className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-accent to-accent-2 opacity-30 blur-2xl"
@@ -95,7 +75,6 @@ export function About() {
             </div>
           )}
 
-          {/* Etiqueta flotante con los años de experiencia */}
           <figcaption className="absolute -bottom-6 left-4 flex items-center gap-3 rounded-2xl border border-line bg-card px-4 py-3 shadow-xl sm:-left-6">
             <span className="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-3xl font-semibold tracking-tight text-transparent">
               {years}

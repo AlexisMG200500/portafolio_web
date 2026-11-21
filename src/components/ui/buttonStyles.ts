@@ -1,11 +1,3 @@
-/*
- * Clases de los botones, separadas del componente para poder reutilizarlas
- * en <button> y en <a> (y para que el Fast Refresh de Vite funcione bien).
- *
- * 👉 Ojo con sobrescribir clases que ya existen (p. ej. pasar "px-0" cuando
- *    la base ya trae "px-5"): en Tailwind gana la que aparece después en el
- *    CSS, no la que escribes al final. Por eso el tamaño es una prop (`size`).
- */
 const variants = {
   primary: 'bg-fg text-bg shadow-sm hover:shadow-[0_8px_30px_-8px_var(--accent)]',
   secondary: 'border border-line bg-card text-fg hover:border-muted/50',

@@ -2,12 +2,6 @@ import { useEffect, useState } from 'react'
 
 type Theme = 'light' | 'dark'
 
-/*
- * Hook de tema claro / oscuro.
- * - Lee el tema inicial de la clase en <html> (la pone el script de index.html).
- * - Al cambiar, pone .light o .dark en <html> y lo guarda en localStorage.
- *   (Thinking Orbs lee esas clases para pintar sus puntos claros u oscuros.)
- */
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() =>
     document.documentElement.classList.contains('dark') ? 'dark' : 'light',

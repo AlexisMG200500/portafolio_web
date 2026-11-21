@@ -7,16 +7,6 @@ import { TechBadge } from '../components/ui/Badge'
 import { education, experience, type Job } from '../data/profile'
 import { inView, stagger } from '../lib/motion'
 
-/*
- *   ┌──────────────────────┬──────────┐
- *   │  trabajo actual      │          │
- *   ├──────────────────────┤ formación│
- *   │  trabajo anterior    │          │
- *   ├──────────────────────┼──────────┤
- *   │  trabajo anterior    │ ¿tu      │
- *   │                      │ equipo?  │
- *   └──────────────────────┴──────────┘
- */
 function JobTile({ job, current }: { job: Job; current: boolean }) {
   return (
     <Tile className="p-7 md:col-span-2">
@@ -39,7 +29,6 @@ function JobTile({ job, current }: { job: Job; current: boolean }) {
             </p>
           )}
         </div>
-        {/* Logos grandes del stack, en fila */}
         <div className="flex gap-2" aria-hidden>
           {job.stack.slice(0, 4).map((t) => (
             <span key={t} className="grid size-10 place-items-center rounded-xl border border-line bg-bg">
@@ -82,7 +71,6 @@ export function Experience() {
       <motion.div variants={stagger(0.1)} {...inView} className="grid gap-4 md:grid-cols-3">
         <JobTile job={currentJob} current />
 
-        {/* Formación: ocupa dos filas junto a los dos primeros trabajos */}
         <Tile className="flex flex-col gap-6 p-6 md:row-span-2">
           <TileLabel>Formación</TileLabel>
           <ol className="relative space-y-6 border-l border-line pl-5">
@@ -101,7 +89,6 @@ export function Experience() {
           <JobTile key={job.company} job={job} current={false} />
         ))}
 
-        {/* Llamada a la acción: el siguiente puesto */}
         <Tile className="border-dashed p-0">
           <a href="#contacto" className="group flex h-full flex-col justify-between gap-6 p-6">
             <TileLabel>Siguiente paso</TileLabel>

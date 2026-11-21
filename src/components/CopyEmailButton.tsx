@@ -1,8 +1,3 @@
-/*
- * Botón "Copiar email" con feedback visual:
- * el icono y el texto cambian a "¡Copiado!" durante 2 segundos.
- * Un aria-live anuncia el cambio a lectores de pantalla.
- */
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { spring } from '../lib/motion'
@@ -12,7 +7,6 @@ import { buttonClasses } from './ui/buttonStyles'
 export function CopyEmailButton({ email }: { email: string }) {
   const [copied, setCopied] = useState(false)
 
-  // Vuelve al estado normal tras 2 s
   useEffect(() => {
     if (!copied) return
     const id = setTimeout(() => setCopied(false), 2000)
@@ -24,7 +18,6 @@ export function CopyEmailButton({ email }: { email: string }) {
       await navigator.clipboard.writeText(email)
       setCopied(true)
     } catch {
-      // Sin permiso de portapapeles (o http sin https): abrimos el cliente de correo
       window.location.href = `mailto:${email}`
     }
   }

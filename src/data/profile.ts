@@ -1,41 +1,24 @@
-/*
- * ─── CONTENIDO DEL PORTAFOLIO ──────────────────────────────────────────────
- * Todo el texto del sitio vive aquí. Para personalizarlo NO necesitas tocar
- * los componentes: cambia estos datos y la interfaz se actualiza sola.
- *
- * Contenido tomado de tu portafolio anterior
- * (alexis200500.github.io/AlexisMG.github.io). Busca "REVISA" en los textos
- * que completé sin tener el dato exacto: cámbialos por lo real.
- */
-
 export const profile = {
   name: 'Alexis Morales Gómez',
   role: 'Coordinador de Desarrollo Web',
   location: 'México',
-  timeZone: 'America/Mexico_City', // para el reloj en vivo del inicio
-  available: true, // muestra el badge "Disponible" en el panel de perfil
+  available: true,
   tagline:
     'Ingeniero en Desarrollo y Gestión de Software. Construyo aplicaciones web y móviles completas: del backend con Laravel, Node.js, Express y NestJS sobre SQL, a interfaces cuidadas con Angular, React y React Native.',
   email: 'alexis.morgomez20@gmail.com',
-  phoneDisplay: '+52 729 143 6499', // cómo se muestra el número de WhatsApp
+  phoneDisplay: '+52 729 143 6499',
   links: {
     github: 'https://github.com/AlexisMG200500',
-    // WhatsApp: 52 = lada de México + tu número. `text` es el mensaje que aparece ya escrito.
     whatsapp: 'https://wa.me/527291436499?text=' + encodeURIComponent('Hola Alexis, vi tu portafolio y me gustaría platicar contigo.'),
     linkedin: 'https://www.linkedin.com/in/alexis-morales-g%C3%B3mez-b23141239/',
-    cv: 'https://drive.google.com/file/d/1dwkM3GtKL81eb5F749lm-s1N2071CX8r/view?usp=sharing', // REVISA: ¿CV actualizado?
+    cv: 'https://drive.google.com/file/d/1dwkM3GtKL81eb5F749lm-s1N2071CX8r/view?usp=sharing',
   },
 }
 
-/*
- * ─── EXPERIENCIA ───────────────────────────────────────────────────────────
- * Ordena del más reciente al más antiguo. `period` es texto libre.
- */
 export type Job = {
   company: string
   role: string
-  /** Puesto con el que entraste, si te ascendieron (se muestra como "Antes: …") */
-  previousRole?: string
+    previousRole?: string
   period: string
   location?: string
   points: string[]
@@ -82,7 +65,7 @@ export const experience: Job[] = [
       'Desarrollo de un sitio web corporativo.',
       'Creación, modelado y gestión de la base de datos.',
     ],
-    stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'], // REVISA: tecnologías exactas
+    stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
   },
 ]
 
@@ -106,15 +89,12 @@ export const education = [
 
 export const about = {
   title: 'Aprendo construyendo.',
-  // Frase principal, en grande junto a la foto
   statement:
     'Ingeniero en Desarrollo y Gestión de Software por la UTVT. Me considero junior y lo que más disfruto de esta profesión es seguir aprendiendo.',
-  // Cada string es un párrafo
   story: [
     'Mi experiencia se ha centrado principalmente en el backend, pero también tengo habilidades en frontend, ya que disfruto aprender y siempre busco adquirir nuevos conocimientos.',
     'Me organizo bien, trabajo a gusto en equipo o por mi cuenta, y me entusiasma contribuir y seguir desarrollándome en un entorno desafiante.',
   ],
-  // Año en que empezaste a trabajar como desarrollador (para calcular los años de experiencia)
   devSince: 2023,
   howIWork: [
     'Divido el trabajo en tareas pequeñas y entrego avances frecuentes.',
@@ -129,17 +109,13 @@ export const about = {
 export type Project = {
   title: string
   description: string
-  detail?: string // una línea extra: qué resolvía / qué hiciste
+  detail?: string
   year?: string
   stack: string[]
   demo?: string
   repo?: string
 }
 
-/*
- * Si un proyecto no tiene demo o repo, borra esa propiedad y el enlace
- * correspondiente desaparece automáticamente.
- */
 export const projects: Project[] = [
   {
     title: 'Control de Acceso',
@@ -195,23 +171,18 @@ export const projects: Project[] = [
   },
   {
     title: 'SmartSite Health Server',
-    description: 'Aplicación web del ecosistema SmartSite.', // REVISA: qué hace
+    description: 'Aplicación web del ecosistema SmartSite.',
     stack: ['Laravel', 'MySQL', 'JavaScript'],
     repo: 'https://github.com/Alexis200500/Healt_Server',
   },
   {
     title: 'Proyecto integrador',
-    description: 'Proyecto integrador de 5.º cuatrimestre.', // REVISA: qué hace
+    description: 'Proyecto integrador de 5.º cuatrimestre.',
     stack: ['Laravel', 'MySQL', 'JavaScript'],
     repo: 'https://github.com/Alexis200500/Proyectodeintegradora-5-Cuatrimestre',
   },
 ]
 
-/*
- * Habilidades por categoría. El nombre de cada una debe coincidir con
- * el de TechIcon.tsx para que salga su logo.
-
- */
 export const skills: { category: string; items: string[] }[] = [
   { category: 'Lenguajes', items: ['JavaScript', 'TypeScript', 'PHP'] },
   {
@@ -229,7 +200,6 @@ export const skills: { category: string; items: string[] }[] = [
   { category: 'Desarrollo asistido por IA', items: ['Claude', 'Codex', 'Gemini'] },
 ]
 
-/* Secciones del sitio (navegación lateral y menú móvil) */
 export const nav = [
   { id: 'sobre-mi', label: 'Sobre mí' },
   { id: 'experiencia', label: 'Experiencia' },
@@ -238,5 +208,4 @@ export const nav = [
   { id: 'contacto', label: 'Contacto' },
 ]
 
-/* Tecnologías que se muestran como "stack principal" en el panel lateral */
 export const mainStack = ['React', 'NestJS', 'TypeScript', 'SQL Server', 'Azure', 'Laravel']

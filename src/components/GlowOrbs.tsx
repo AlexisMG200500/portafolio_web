@@ -1,10 +1,3 @@
-/*
- * Orbes de luz difuminados para los FONDOS (panel de perfil y loader).
- * Son decorativos: cada orbe gira sobre un "brazo" (rotate = transform,
- * barato) y pulsa con scale. El blur del contenedor les da aspecto de luz.
- *
- * (El loader usa otra cosa: Thinking Orbs, ver Loader.tsx)
- */
 import { motion } from 'motion/react'
 
 const ORBS = [

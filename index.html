@@ -2,7 +2,6 @@
 <html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <!-- Favicon: la ilustración del portátil (fotos/foto-inicio.png) en cuadrado, dentro de public/ -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/icon-180.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,16 +12,13 @@
     />
     <meta name="theme-color" content="#0a0a0b" />
 
-    <!-- Open Graph: cómo se ve el enlace al compartirlo en LinkedIn / WhatsApp -->
     <meta property="og:title" content="Alexis Morales Gómez · Desarrollador Web" />
     <meta property="og:description" content="Coordinador de desarrollo web: Laravel, Angular, React y SQL." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://alexismoralesgomez.com" />
-    <!-- 👉 Añade una captura de 1200×630 en public/og.png para la vista previa al compartir -->
     <meta property="og:image" content="https://alexismoralesgomez.com/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Fuentes: Geist (texto) y Geist Mono (detalles técnicos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,11 +26,6 @@
       rel="stylesheet"
     />
 
-    <!--
-      Aplica el tema guardado ANTES de pintar, para evitar el "parpadeo".
-      Por defecto: oscuro. Usamos las clases .dark / .light porque el loader
-      Thinking Orbs las lee para elegir el color de sus puntos.
-    -->
     <script>
       try {
         if (localStorage.getItem('theme') === 'light') {

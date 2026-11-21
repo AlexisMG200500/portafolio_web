@@ -1,10 +1,3 @@
-/*
- * ─── CONTACTO ──────────────────────────────────────────────────────────────
- * Centrado, sobre la esfera 3D que vuelve al centro de la pantalla.
- * Correo grande + copiar, y un panel de cristal con el resto de canales.
- * 👉 ¿Quieres un formulario? Lo más sencillo es Formspree o Netlify Forms:
- *    un <form action="https://formspree.io/f/TU_ID" method="POST"> basta.
- */
 import { motion } from 'motion/react'
 import { CopyEmailButton } from '../components/CopyEmailButton'
 import { ArrowUpRightIcon, MailIcon } from '../components/icons'
@@ -22,7 +15,6 @@ export function Contact() {
 
   return (
     <section id="contacto" aria-labelledby="contacto-title" className="relative px-5 pt-24 pb-10 sm:pt-32">
-      {/* Halo para que el texto se lea sobre la esfera */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_35%_at_50%_35%,var(--bg)_0%,transparent_100%)] opacity-70" aria-hidden />
 
       <motion.div variants={stagger(0.08)} {...inView} className="mx-auto flex max-w-4xl flex-col items-center text-center">
@@ -50,7 +42,6 @@ export function Contact() {
           <CopyEmailButton email={profile.email} />
         </motion.div>
 
-        {/* Panel de canales */}
         <motion.ul variants={fadeUp} className="mt-12 grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {channels.map(({ label, detail, href, icon }) => (
             <li key={label}>

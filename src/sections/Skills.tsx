@@ -1,9 +1,3 @@
-/*
- * ─── HABILIDADES ───────────────────────────────────────────────────────────
- * Paneles de cristal (dejan ver la "ola" 3D del fondo) con las tecnologías
- * de cada categoría como chips con su logo.
- * Cada chip entra en cascada y sube un poco al pasar el ratón.
- */
 import { motion } from 'motion/react'
 import { Section } from '../components/Section'
 import { TechIcon } from '../components/TechIcon'

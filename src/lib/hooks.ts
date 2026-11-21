@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react'
 
-/**
- * Devuelve el id de la sección que está ahora en pantalla ("scroll spy").
- * Usa IntersectionObserver (eficiente: no escucha cada evento de scroll).
- * La franja de detección es la zona central de la ventana.
- */
 export function useActiveSection(ids: string[]) {
   const [active, setActive] = useState(ids[0])
 
