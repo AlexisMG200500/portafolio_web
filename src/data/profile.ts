@@ -51,7 +51,9 @@ export const experience: Job[] = [
     location: 'Ciudad de México',
     points: [
       'Entré como desarrollador web y hoy coordino el desarrollo web de la empresa.',
-      'Migré el sistema de la empresa de PHP a Angular + Express (v2) y hoy desarrollo su sucesor, el Sistema Integral en React + NestJS, además de la plataforma de Control de Acceso.',
+      'El sistema de la empresa nació en PHP y después pasó a su v2 en Angular + Express. Con el crecimiento de la empresa y la creación de nuevas áreas, hoy se conoce como Sistema Integral y está hecho en React + NestJS.',
+      'También se desarrolló la plataforma de Control de Acceso, que controla las puertas de varias sucursales con terminales de reconocimiento facial: registro del personal, invitaciones a visitas con QR, verificación del guardia en caseta y entradas y salidas en tiempo real.',
+      'Desarrollé la landing page de Falcon Ventures: sitio corporativo bilingüe (español/inglés) con SEO, formularios de contacto y despliegue en Vercel.',
       'Levanto requisitos con las áreas y modelo y gestiono las bases de datos de cada módulo.',
       'Creo y consumo APIs con Express, y genero mapas con Leaflet y Google Maps.',
       'Presento resultados y soluciones a socios y partes interesadas.',
@@ -103,12 +105,17 @@ export const education = [
 ]
 
 export const about = {
-  title: 'Del backend a la interfaz, con ganas de seguir aprendiendo.',
+  title: 'Aprendo construyendo.',
+  // Frase principal, en grande junto a la foto
+  statement:
+    'Ingeniero en Desarrollo y Gestión de Software por la UTVT. Me considero junior y lo que más disfruto de esta profesión es seguir aprendiendo.',
   // Cada string es un párrafo
   story: [
-    'Soy egresado de Ingeniería en Desarrollo y Gestión de Software por la Universidad Tecnológica del Valle de Toluca. Mi experiencia se ha centrado en el backend —PHP, Laravel, MySQL y SQL Server—, construyendo sistemas reales para empresas e instituciones.',
-    'Con el tiempo me he acercado cada vez más al frontend: React, TypeScript y NestJS en el trabajo, y Tailwind CSS en proyectos como este portafolio. Me gusta entender una aplicación de punta a punta, desde la base de datos hasta el último detalle de la interfaz.',
+    'Mi experiencia se ha centrado principalmente en el backend, pero también tengo habilidades en frontend, ya que disfruto aprender y siempre busco adquirir nuevos conocimientos.',
+    'Me organizo bien, trabajo a gusto en equipo o por mi cuenta, y me entusiasma contribuir y seguir desarrollándome en un entorno desafiante.',
   ],
+  // Año en que empezaste a trabajar como desarrollador (para calcular los años de experiencia)
+  devSince: 2023,
   howIWork: [
     'Divido el trabajo en tareas pequeñas y entrego avances frecuentes.',
     'Trabajo bien en equipo y también de forma autónoma.',
@@ -116,7 +123,7 @@ export const about = {
     'Cada proyecto es una excusa para dominar algo nuevo.',
   ],
   lookingFor:
-    'Un equipo donde aportar mi experiencia en backend, crecer en frontend y cuidar la calidad del producto.',
+    'Un equipo donde pueda aprender de gente con más experiencia, aportar lo que ya sé y crecer como desarrollador full stack.',
 }
 
 export type Project = {
@@ -162,7 +169,7 @@ export const projects: Project[] = [
   {
     title: 'Zascita v2',
     description: 'Migración del sistema de gestión de Zascita de México de PHP a tecnologías modernas.',
-    detail: 'Separé el monolito en PHP en un frontend Angular y una API propia con Express sobre la misma base SQL Server, y sumé mapas con Leaflet y Google Maps.',
+    detail: 'Llevamos el sistema original en PHP a un frontend en Angular con una API propia en Express sobre SQL Server, y sumamos mapas con Leaflet y Google Maps.',
     stack: ['Angular', 'TypeScript', 'Express', 'Node.js', 'SQL Server', 'Leaflet', 'Google Maps'],
     demo: 'https://app.zascita.com/',
   },

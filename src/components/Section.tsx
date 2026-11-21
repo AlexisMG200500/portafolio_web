@@ -13,12 +13,21 @@ type SectionProps = {
   eyebrow: string // texto pequeño encima del título, ej. "03 · Proyectos"
   title: string
   intro?: string
+  /** true = en escritorio la sección ocupa al menos una pantalla, con el contenido centrado */
+  fill?: boolean
   children: ReactNode
 }
 
-export function Section({ id, eyebrow, title, intro, children }: SectionProps) {
+export function Section({ id, eyebrow, title, intro, fill = false, children }: SectionProps) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+    <section
+      id={id}
+      aria-labelledby={`${id}-title`}
+      className={`mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 ${
+        // pt-24 deja libre la barra superior fija (h-16) al saltar a la sección
+        fill ? 'md:flex md:min-h-svh md:flex-col md:justify-center md:pt-24 md:pb-12' : ''
+      }`}
+    >
       <motion.header
         variants={stagger(0.1)}
         {...inView}
