@@ -31,6 +31,10 @@ const MAX_MS = 2500
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
+// Que el navegador NO recuerde la posición del scroll al recargar:
+// la página siempre arranca en la portada.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+
 export default function App() {
   const [ready, setReady] = useState(false)
   const reduceMotion = useReducedMotion()
@@ -47,6 +51,19 @@ export default function App() {
       cancelled = true
     }
   }, [reduceMotion])
+
+  // Mientras está el loader no se puede hacer scroll; al terminar, arriba del todo
+  useEffect(() => {
+    const root = document.documentElement
+    if (!ready) {
+      root.style.overflow = 'hidden'
+      return
+    }
+    root.style.overflow = ''
+    // Quitamos el #seccion de la URL para que al recargar no salte a ella
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [ready])
 
   return (
     // reducedMotion="user": si el sistema pide menos movimiento, Motion

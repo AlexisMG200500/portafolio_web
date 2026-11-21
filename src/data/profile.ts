@@ -62,7 +62,7 @@ export const experience: Job[] = [
   },
   {
     company: 'Smart Site Company',
-    role: 'Desarrollador Web',
+    role: 'Estadías profesionales · Desarrollador Web',
     period: 'may 2021 — abr 2022',
     location: 'San Mateo Atenco',
     points: [
@@ -74,7 +74,7 @@ export const experience: Job[] = [
   },
   {
     company: 'Soluciones Informáticas Profesionales de Toluca',
-    role: 'Desarrollador Web',
+    role: 'Estadías profesionales · Desarrollador Web',
     period: 'abr 2020 — sep 2020',
     location: 'Toluca',
     points: [

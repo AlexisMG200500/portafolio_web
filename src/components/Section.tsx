@@ -42,7 +42,7 @@ export function Section({ id, eyebrow, title, intro, fill = false, children }: S
           </motion.h2>
         </div>
         {intro && (
-          <motion.p variants={fadeUp} className="max-w-sm text-sm text-muted text-pretty md:text-right">
+          <motion.p variants={fadeUp} className="max-w-sm text-base font-medium text-fg/90 text-pretty md:text-right">
             {intro}
           </motion.p>
         )}
