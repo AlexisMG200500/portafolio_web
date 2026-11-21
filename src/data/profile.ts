@@ -51,12 +51,12 @@ export const experience: Job[] = [
     location: 'Ciudad de México',
     points: [
       'Entré como desarrollador web y hoy coordino el desarrollo web de la empresa.',
-      'Desarrollo el Sistema Integral de la empresa (React + NestJS, y su primera versión en PHP) y la plataforma de Control de Acceso.',
+      'Migré el sistema de la empresa de PHP a Angular + Express (v2) y hoy desarrollo su sucesor, el Sistema Integral en React + NestJS, además de la plataforma de Control de Acceso.',
       'Levanto requisitos con las áreas y modelo y gestiono las bases de datos de cada módulo.',
       'Creo y consumo APIs con Express, y genero mapas con Leaflet y Google Maps.',
       'Presento resultados y soluciones a socios y partes interesadas.',
     ],
-    stack: ['React', 'NestJS', 'SQL Server', 'Azure', 'Node.js', 'TypeScript', 'PHP', 'Express', 'Leaflet', 'Google Maps'],
+    stack: ['React', 'NestJS', 'Angular', 'SQL Server', 'Azure', 'Node.js', 'TypeScript', 'PHP', 'Express', 'Leaflet', 'Google Maps'],
   },
   {
     company: 'Smart Site Company',
@@ -150,7 +150,6 @@ export const projects: Project[] = [
     detail:
       'Frontend en React con shadcn/ui y backend en NestJS sobre SQL Server. Registro con verificación de identidad (prueba de vida y comparación facial con AWS) y un servicio propio de OCR y rostro en Python con FastAPI. Generé certificados médicos dinámicos, firmas digitales y la verificación de rostros.',
     stack: ['React', 'TypeScript', 'NestJS', 'SQL Server', 'Python', 'FastAPI', 'AWS', 'Kubernetes'],
-    demo: 'https://app.zascita.com/',
   },
   {
     title: 'Falcon Ventures',
@@ -161,10 +160,17 @@ export const projects: Project[] = [
     stack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'Vercel'],
   },
   {
+    title: 'Zascita v2',
+    description: 'Migración del sistema de gestión de Zascita de México de PHP a tecnologías modernas.',
+    detail: 'Separé el monolito en PHP en un frontend Angular y una API propia con Express sobre la misma base SQL Server, y sumé mapas con Leaflet y Google Maps.',
+    stack: ['Angular', 'TypeScript', 'Express', 'Node.js', 'SQL Server', 'Leaflet', 'Google Maps'],
+    demo: 'https://app.zascita.com/',
+  },
+  {
     title: 'Zascita v1',
     description: 'Primera versión del sistema de gestión de Zascita de México.',
-    detail: 'Aplicación web en PHP con base de datos SQL Server.',
-    stack: ['PHP', 'SQL Server', 'JavaScript'],
+    detail: 'Aplicación web en PHP con base de datos SQL Server, y videos alojados en Hostinger.',
+    stack: ['PHP', 'SQL Server', 'JavaScript', 'Hostinger'],
     demo: 'https://appv1.zascita.com/zcm/login/login.html',
   },
   {
@@ -207,7 +213,7 @@ export const skills: { category: string; items: string[] }[] = [
   },
   {
     category: 'Cloud y servicios',
-    items: ['Azure', 'Google Cloud Storage', 'Google Maps', 'Leaflet', 'Vercel', 'Docker', 'Nginx'],
+    items: ['Azure', 'Google Cloud Storage', 'Google Maps', 'Leaflet', 'Vercel', 'Hostinger', 'Docker', 'Nginx'],
   },
   { category: 'Backend', items: ['Node.js', 'Express', 'NestJS', 'Laravel'] },
   { category: 'Bases de datos', items: ['MySQL', 'SQL Server', 'Redis'] },

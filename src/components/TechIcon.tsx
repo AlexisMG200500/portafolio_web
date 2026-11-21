@@ -25,6 +25,7 @@ import {
   siGooglegemini,
   siGooglecloudstorage,
   siGooglemaps,
+  siHostinger,
   siHtml5,
   siJavascript,
   siLaravel,
@@ -73,6 +74,8 @@ const ICONS: Record<string, Logo> = {
   Leaflet: siLeaflet,
   'Google Cloud Storage': siGooglecloudstorage,
   Vercel: { ...siVercel, hex: '' }, // negro: usamos el color del texto
+  // Su morado original (#673DE6) casi no se ve en modo oscuro: usamos uno más claro
+  Hostinger: { ...siHostinger, hex: '7C5CF0' },
   Postman: siPostman,
   'Three.js': { ...siThreedotjs, hex: '' }, // negro: usamos el color del texto
   Claude: siClaude,
