@@ -12,24 +12,29 @@
 /* `dark:` se activa cuando <html> tiene la clase .dark (no por el sistema) */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Tema claro "papel": fondo gris cálido en vez de blanco puro para no
+ * deslumbrar. Texto casi negro suavizado y acentos algo más oscuros para
+ * mantener buen contraste (WCAG AA) sobre el fondo claro.
+ */
 :root {
-  --bg: #fafafa;
-  --fg: #0a0a0b;
-  --muted: #5b5b66;
-  --card: #ffffff;
-  --line: #e6e6ea;
-  --accent: #6d5dfc;
-  --accent-2: #22c1a6;
+  --bg: #ebe8e1;
+  --fg: #1d1c22;
+  --muted: #45434d;
+  --card: #f4f2ed;
+  --line: #d6d2c8;
+  --accent: #1d4ed8; /* azul */
+  --accent-2: #0a7363; /* verde azulado */
   --accent-fg: #ffffff;
 }
 
 .dark {
   --bg: #0a0a0b;
   --fg: #ededf0;
-  --muted: #9a9aa6;
+  --muted: #a9a9b4;
   --card: #121215;
   --line: #24242a;
-  --accent: #8b7dff;
+  --accent: #4f8dff; /* azul */
   --accent-2: #3ddbc0;
   --accent-fg: #0a0a0b;
 }
@@ -74,8 +79,10 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+  /* Selección sólida: fondo azul y texto con contraste, sin mezclas */
   ::selection {
-    background: color-mix(in oklab, var(--accent) 35%, transparent);
+    background: var(--accent);
+    color: var(--accent-fg);
   }
 
   /* Foco visible y consistente para navegación con teclado (accesibilidad) */

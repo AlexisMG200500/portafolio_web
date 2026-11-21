@@ -10,7 +10,7 @@
 
 export const profile = {
   name: 'Alexis Morales Gómez',
-  role: 'Desarrollador Web Junior',
+  role: 'Coordinador de Desarrollo Web',
   location: 'México',
   timeZone: 'America/Mexico_City', // para el reloj en vivo del inicio
   available: true, // muestra el badge "Disponible" en el panel de perfil
@@ -34,6 +34,8 @@ export const profile = {
 export type Job = {
   company: string
   role: string
+  /** Puesto con el que entraste, si te ascendieron (se muestra como "Antes: …") */
+  previousRole?: string
   period: string
   location?: string
   points: string[]
@@ -43,32 +45,63 @@ export type Job = {
 export const experience: Job[] = [
   {
     company: 'Zascita de México',
-    role: 'Desarrollador Full Stack', // REVISA: tu puesto exacto
-    period: 'REVISA 2023 — Actualidad',
-    location: 'Seguridad privada',
+    role: 'Coordinador de Desarrollo Web',
+    previousRole: 'Desarrollador Web',
+    period: 'mar 2023 — Actualidad',
+    location: 'Ciudad de México',
     points: [
-      'Desarrollo la nueva plataforma interna de la empresa como aplicación Angular conectada a SQL Server.',
-      'Mantengo y amplío la primera versión del sistema, construida en PHP.',
-      'REVISA: añade un logro concreto (módulos que hiciste, usuarios, tiempo ahorrado…).',
+      'Entré como desarrollador web y hoy coordino el desarrollo web de la empresa.',
+      'Desarrollo el Sistema Integral de la empresa (Angular, y su primera versión en PHP) y la plataforma de Control de Acceso.',
+      'Lidero la expansión de Control de Acceso a 16 sucursales: cola de pendientes, operación sin internet sin pérdida de eventos y pruebas físicas en producción.',
+      'Levanto requisitos con las áreas y modelo y gestiono las bases de datos de cada módulo.',
+      'Creo y consumo APIs con Express, y genero mapas con Leaflet y Google Maps.',
+      'Presento resultados y soluciones a socios y partes interesadas.',
     ],
-    stack: ['Angular', 'TypeScript', 'PHP', 'SQL Server'],
+    stack: ['Angular', 'NestJS', 'SQL Server', 'Azure', 'Node.js', 'TypeScript', 'PHP', 'Express', 'Leaflet', 'Google Maps'],
   },
   {
-    company: 'Ayuntamiento de San Mateo Atenco · Opdapas',
-    role: 'Estadías profesionales',
-    period: 'REVISA año',
+    company: 'Smart Site Company',
+    role: 'Desarrollador Web',
+    period: 'may 2021 — abr 2022',
+    location: 'San Mateo Atenco',
     points: [
-      'Desarrollé SmartSite, una aplicación web en Laravel para el organismo.',
-      'REVISA: describe qué procesos digitalizaste y para quién.',
+      'Sitio web y sistema de tickets e incidencias para el Ayuntamiento de San Mateo Atenco y OPDAPAS.',
+      'Sitio web y sistema de consultas para la clínica San Miguel.',
+      'Modelado y gestión de bases de datos, e integración con APIs de Google.',
     ],
-    stack: ['Laravel', 'MySQL', 'JavaScript'],
+    stack: ['Laravel', 'MySQL', 'PHP', 'JavaScript', 'Google Maps'],
+  },
+  {
+    company: 'Soluciones Informáticas Profesionales de Toluca',
+    role: 'Desarrollador Web',
+    period: 'abr 2020 — sep 2020',
+    location: 'Toluca',
+    points: [
+      'Tienda online responsive, pensada para móvil, tableta y escritorio.',
+      'Desarrollo de un sitio web corporativo.',
+      'Creación, modelado y gestión de la base de datos.',
+    ],
+    stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'], // REVISA: tecnologías exactas
   },
 ]
 
-export const education = {
-  school: 'Universidad Tecnológica del Valle de Toluca',
-  degree: 'Ingeniería en Desarrollo y Gestión de Software',
-}
+export const education = [
+  {
+    degree: 'Ingeniería en Desarrollo y Gestión de Software',
+    school: 'Universidad Tecnológica del Valle de Toluca',
+    period: '2020 — 2022',
+  },
+  {
+    degree: 'TSU en Tecnologías de la Información · Desarrollo de Software Multiplataforma',
+    school: 'Universidad Tecnológica del Valle de Toluca',
+    period: '2018 — 2020',
+  },
+  {
+    degree: 'Técnico en Programación',
+    school: 'CETIS No. 23',
+    period: '2015 — 2018',
+  },
+]
 
 export const about = {
   title: 'Del backend a la interfaz, con ganas de seguir aprendiendo.',
@@ -103,9 +136,18 @@ export type Project = {
  */
 export const projects: Project[] = [
   {
-    title: 'Plataforma Zascita',
-    description: 'Sistema interno para una empresa de seguridad privada armada.',
-    detail: 'Nueva versión como SPA en Angular sobre SQL Server.',
+    title: 'Control de Acceso',
+    year: '2026',
+    description:
+      'Plataforma multi-sucursal que controla puertas con terminales Hikvision de reconocimiento facial, pensada para 16 sucursales y 64 terminales.',
+    detail:
+      'Tres piezas: web instalable, backend en la nube y un agente Node en cada sede que habla con las terminales (ISAPI/RTSP). Visitas con selfie e invitación por WhatsApp/SMS, verificación facial en caseta, QR dinámico, tarjetas con NFC, jornada y permanencia, y una cola de pendientes que no pierde datos sin internet (1 011 eventos recuperados en prueba real).',
+    stack: ['NestJS', 'TypeScript', 'SQL Server', 'Azure', 'Google Cloud Storage', 'Docker'],
+  },
+  {
+    title: 'Sistema Integral Zascita',
+    description: 'Sistema interno de Zascita de México, empresa de seguridad privada armada: concentra la operación de las áreas en una sola plataforma.',
+    detail: 'SPA en Angular sobre SQL Server. Se integra con Control de Acceso para crear invitaciones a visitas directamente desde el sistema.',
     stack: ['Angular', 'TypeScript', 'SQL Server'],
     demo: 'https://app.zascita.com/',
   },
@@ -125,7 +167,7 @@ export const projects: Project[] = [
   },
   {
     title: 'SmartSite · Opdapas',
-    description: 'Proyecto de estadías para el Ayuntamiento de San Mateo Atenco y Opdapas.',
+    description: 'Sitio web y sistema de tickets e incidencias para el Ayuntamiento de San Mateo Atenco y OPDAPAS.',
     stack: ['Laravel', 'MySQL', 'JavaScript'],
     repo: 'https://github.com/Alexis200500/Opdapas-SanMateoAtenco',
   },
@@ -156,7 +198,7 @@ export const skills: { category: string; items: string[] }[] = [
   },
   {
     category: 'Cloud y servicios',
-    items: ['Azure', 'Google Cloud Storage', 'Google Maps', 'Vercel', 'Docker', 'Nginx'],
+    items: ['Azure', 'Google Cloud Storage', 'Google Maps', 'Leaflet', 'Vercel', 'Docker', 'Nginx'],
   },
   { category: 'Backend', items: ['Node.js', 'Express', 'NestJS', 'Laravel'] },
   { category: 'Bases de datos', items: ['MySQL', 'SQL Server', 'Redis'] },

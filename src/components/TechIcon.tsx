@@ -28,6 +28,7 @@ import {
   siHtml5,
   siJavascript,
   siLaravel,
+  siLeaflet,
   siMysql,
   siNestjs,
   siNginx,
@@ -66,6 +67,7 @@ const ICONS: Record<string, Logo> = {
   Axios: siAxios,
   'React Query': siReactquery,
   'Google Maps': siGooglemaps,
+  Leaflet: siLeaflet,
   'Google Cloud Storage': siGooglecloudstorage,
   Vercel: { ...siVercel, hex: '' }, // negro: usamos el color del texto
   Postman: siPostman,

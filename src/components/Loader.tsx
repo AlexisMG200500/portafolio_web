@@ -9,7 +9,7 @@
  * 👉 Para adaptarlo:
  *   - `state`: prueba 'searching', 'weaving', 'connecting', 'breathing'…
  *     (9 animaciones distintas, ver libraries.dev/orbs)
- *   - `color`: tiñe los puntos. Aquí usamos el violeta del acento.
+ *   - `color`: tiñe los puntos. Aquí usamos el azul del acento.
  *   - El tiempo que dura el loader se controla en App.tsx (MIN_MS / MAX_MS).
  *
  * Accesibilidad: role="status" + texto oculto; el orbe ya respeta
@@ -39,7 +39,7 @@ export function Loader() {
       <div className="relative flex flex-col items-center gap-8" aria-hidden>
         {/* El canvas mide 64px; lo escalamos ×2 con transform (no afecta al layout) */}
         <div className="grid size-32 place-items-center">
-          <ThinkingOrb state="working" size={64} color="#8b7dff" style={{ transform: 'scale(2)' }} />
+          <ThinkingOrb state="working" size={64} color="#4f8dff" style={{ transform: 'scale(2)' }} />
         </div>
         <motion.p
           className="font-mono text-xs uppercase tracking-[0.3em] text-muted"

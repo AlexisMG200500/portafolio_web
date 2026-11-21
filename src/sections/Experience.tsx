@@ -9,7 +9,9 @@ import { inView, stagger } from '../lib/motion'
 
 /*
  *   ┌──────────────────────┬──────────┐
- *   │  trabajo actual      │ formación│
+ *   │  trabajo actual      │          │
+ *   ├──────────────────────┤ formación│
+ *   │  trabajo anterior    │          │
  *   ├──────────────────────┼──────────┤
  *   │  trabajo anterior    │ ¿tu      │
  *   │                      │ equipo?  │
@@ -31,6 +33,11 @@ function JobTile({ job, current }: { job: Job; current: boolean }) {
             {job.role}
             {job.location && <span className="text-muted"> · {job.location}</span>}
           </p>
+          {job.previousRole && (
+            <p className="mt-1 font-mono text-[11px] text-muted">
+              Antes: {job.previousRole} <span className="text-accent-2">→ ascendido</span>
+            </p>
+          )}
         </div>
         {/* Logos grandes del stack, en fila */}
         <div className="flex gap-2" aria-hidden>
@@ -75,13 +82,19 @@ export function Experience() {
       <motion.div variants={stagger(0.1)} {...inView} className="grid gap-4 md:grid-cols-3">
         <JobTile job={currentJob} current />
 
-        {/* Formación */}
-        <Tile className="flex flex-col justify-between gap-6 p-6">
+        {/* Formación: ocupa dos filas junto a los dos primeros trabajos */}
+        <Tile className="flex flex-col gap-6 p-6 md:row-span-2">
           <TileLabel>Formación</TileLabel>
-          <div>
-            <p className="font-semibold leading-snug">{education.degree}</p>
-            <p className="mt-2 text-sm text-muted">{education.school}</p>
-          </div>
+          <ol className="relative space-y-6 border-l border-line pl-5">
+            {education.map((ed) => (
+              <li key={ed.degree} className="relative">
+                <span className="absolute top-1.5 -left-[25px] size-2 rounded-full bg-accent ring-4 ring-card" aria-hidden />
+                <p className="font-mono text-[11px] text-accent">{ed.period}</p>
+                <p className="mt-1 font-semibold leading-snug">{ed.degree}</p>
+                <p className="mt-1 text-sm text-muted">{ed.school}</p>
+              </li>
+            ))}
+          </ol>
         </Tile>
 
         {pastJobs.map((job) => (

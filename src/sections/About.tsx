@@ -11,7 +11,7 @@ import { about } from '../data/profile'
 import { fadeUp, inView, stagger } from '../lib/motion'
 
 function Word({ children, progress, range }: { children: string; progress: MotionValue<number>; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.15, 1])
+  const opacity = useTransform(progress, range, [0.35, 1])
   return (
     <motion.span style={{ opacity }} className="mr-[0.25em] inline-block">
       {children}

@@ -10,7 +10,7 @@ import { motion } from 'motion/react'
 const ORBS = [
   { color: 'var(--accent)', size: 72, radius: 26, duration: 2.4, delay: 0 },
   { color: 'var(--accent-2)', size: 60, radius: 30, duration: 3.1, delay: -1 },
-  { color: '#f472b6', size: 52, radius: 22, duration: 2.8, delay: -2 },
+  { color: '#38bdf8', size: 52, radius: 22, duration: 2.8, delay: -2 },
 ]
 
 export function GlowOrbs({ scale = 1, className = '' }: { scale?: number; className?: string }) {

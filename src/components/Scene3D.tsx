@@ -31,7 +31,7 @@ import { Component, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import * as THREE from 'three'
 
 const COUNT = 1600
-const COLORS = ['#8b7dff', '#3ddbc0'] // mismos tonos que --accent y --accent-2
+const COLORS = ['#4f8dff', '#3ddbc0'] // mismos tonos que --accent y --accent-2
 const GOLDEN = Math.PI * (3 - Math.sqrt(5))
 
 /** Número "aleatorio" determinista entre 0 y 1 (mismo resultado siempre). */
