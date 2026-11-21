@@ -13,6 +13,9 @@ import {
   siGooglecloudstorage,
   siGooglemaps,
   siHostinger,
+  siJquery,
+  siFontawesome,
+  siGithubpages,
   siHtml5,
   siJavascript,
   siLaravel,
@@ -60,6 +63,9 @@ const ICONS: Record<string, Logo> = {
   Leaflet: siLeaflet,
   'Google Cloud Storage': siGooglecloudstorage,
   Vercel: { ...siVercel, hex: '' }, // negro: usamos el color del texto
+  jQuery: siJquery,
+  'Font Awesome': siFontawesome,
+  'GitHub Pages': { ...siGithubpages, hex: '' },
   Hostinger: { ...siHostinger, hex: '7C5CF0' },
   Postman: siPostman,
   'Three.js': { ...siThreedotjs, hex: '' }, // negro: usamos el color del texto

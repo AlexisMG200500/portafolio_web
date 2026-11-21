@@ -157,6 +157,14 @@ export const projects: Project[] = [
     demo: 'https://appv1.zascita.com/zcm/login/login.html',
   },
   {
+    title: 'Mi primer portafolio',
+    description: 'Mi primera página personal para presentar mi perfil, experiencia y proyectos.',
+    detail: 'Sitio estático con HTML, CSS y JavaScript, gráficas de habilidades con jQuery e iconos de Font Awesome, publicado en GitHub Pages.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'Font Awesome', 'GitHub Pages'],
+    demo: 'https://alexis200500.github.io/AlexisMG.github.io/',
+    repo: 'https://github.com/Alexis200500/AlexisMG.github.io',
+  },
+  {
     title: 'Alquiladora',
     description: 'Sistema de administración para una alquiladora.',
     detail: 'CRUD con recuperación de contraseña por correo, exportación a PDF/Excel e importación desde Excel.',
