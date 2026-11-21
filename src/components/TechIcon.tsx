@@ -37,6 +37,9 @@ import {
   siPhp,
   siPnpm,
   siPostman,
+  siPython,
+  siFastapi,
+  siKubernetes,
   siReact,
   siReactquery,
   siRedis,
@@ -86,6 +89,9 @@ const ICONS: Record<string, Logo> = {
   GitHub: { ...siGithub, hex: '' }, // negro: mejor usar el color del texto
   Docker: siDocker,
   Nginx: siNginx,
+  Python: siPython,
+  FastAPI: siFastapi,
+  Kubernetes: siKubernetes,
 }
 
 /*
@@ -99,6 +105,7 @@ const IMAGES: Record<string, string> = {
   'SQL Server': '/icons/sqlserver.svg',
   Azure: '/icons/azure.svg',
   Codex: '/icons/codex.svg',
+  AWS: '/icons/aws.svg',
 }
 
 /* Iconos genéricos (trazo) para tecnologías sin ningún logo. */

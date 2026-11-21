@@ -19,8 +19,8 @@
  */
 :root {
   --bg: #ebe8e1;
-  --fg: #1d1c22;
-  --muted: #45434d;
+  --fg: #111014;
+  --muted: #33313a;
   --card: #f4f2ed;
   --line: #d6d2c8;
   --accent: #1d4ed8; /* azul */
@@ -106,7 +106,7 @@
  * y también con texto en degradado (bg-clip-text), porque es un `filter`.
  */
 @utility text-halo {
-  filter: drop-shadow(0 0 2px var(--bg)) drop-shadow(0 0 8px var(--bg));
+  filter: drop-shadow(0 0 1px var(--bg)) drop-shadow(0 0 3px var(--bg)) drop-shadow(0 0 10px var(--bg));
 }
 
 /* Textura sutil de cuadrícula para el fondo del Hero */

@@ -51,13 +51,12 @@ export const experience: Job[] = [
     location: 'Ciudad de México',
     points: [
       'Entré como desarrollador web y hoy coordino el desarrollo web de la empresa.',
-      'Desarrollo el Sistema Integral de la empresa (Angular, y su primera versión en PHP) y la plataforma de Control de Acceso.',
-      'Lidero la expansión de Control de Acceso a 16 sucursales: cola de pendientes, operación sin internet sin pérdida de eventos y pruebas físicas en producción.',
+      'Desarrollo el Sistema Integral de la empresa (React + NestJS, y su primera versión en PHP) y la plataforma de Control de Acceso.',
       'Levanto requisitos con las áreas y modelo y gestiono las bases de datos de cada módulo.',
       'Creo y consumo APIs con Express, y genero mapas con Leaflet y Google Maps.',
       'Presento resultados y soluciones a socios y partes interesadas.',
     ],
-    stack: ['Angular', 'NestJS', 'SQL Server', 'Azure', 'Node.js', 'TypeScript', 'PHP', 'Express', 'Leaflet', 'Google Maps'],
+    stack: ['React', 'NestJS', 'SQL Server', 'Azure', 'Node.js', 'TypeScript', 'PHP', 'Express', 'Leaflet', 'Google Maps'],
   },
   {
     company: 'Smart Site Company',
@@ -108,7 +107,7 @@ export const about = {
   // Cada string es un párrafo
   story: [
     'Soy egresado de Ingeniería en Desarrollo y Gestión de Software por la Universidad Tecnológica del Valle de Toluca. Mi experiencia se ha centrado en el backend —PHP, Laravel, MySQL y SQL Server—, construyendo sistemas reales para empresas e instituciones.',
-    'Con el tiempo me he acercado cada vez más al frontend: Angular en el trabajo y React, TypeScript y Tailwind CSS en proyectos como este portafolio. Me gusta entender una aplicación de punta a punta, desde la base de datos hasta el último detalle de la interfaz.',
+    'Con el tiempo me he acercado cada vez más al frontend: React, TypeScript y NestJS en el trabajo, y Tailwind CSS en proyectos como este portafolio. Me gusta entender una aplicación de punta a punta, desde la base de datos hasta el último detalle de la interfaz.',
   ],
   howIWork: [
     'Divido el trabajo en tareas pequeñas y entrego avances frecuentes.',
@@ -139,17 +138,27 @@ export const projects: Project[] = [
     title: 'Control de Acceso',
     year: '2026',
     description:
-      'Plataforma multi-sucursal que controla puertas con terminales Hikvision de reconocimiento facial, pensada para 16 sucursales y 64 terminales.',
+      'Plataforma SaaS multi-organización para controlar el acceso físico a sitios y puertas con terminales de reconocimiento facial.',
     detail:
-      'Tres piezas: web instalable, backend en la nube y un agente Node en cada sede que habla con las terminales (ISAPI/RTSP). Visitas con selfie e invitación por WhatsApp/SMS, verificación facial en caseta, QR dinámico, tarjetas con NFC, jornada y permanencia, y una cola de pendientes que no pierde datos sin internet (1 011 eventos recuperados en prueba real).',
-    stack: ['NestJS', 'TypeScript', 'SQL Server', 'Azure', 'Google Cloud Storage', 'Docker'],
+      'Frontend en React 19 instalable como PWA, backend en NestJS 11 sobre SQL Server y un agente en Node.js que habla con terminales Hikvision por ISAPI. Eventos de acceso en vivo con Redis, reconocimiento facial en navegador y servidor, y reportes PDF/Excel por streaming. Desplegado con Docker en Azure.',
+    stack: ['React', 'TypeScript', 'NestJS', 'SQL Server', 'Redis', 'Node.js', 'Docker', 'Azure'],
   },
   {
     title: 'Sistema Integral Zascita',
-    description: 'Sistema interno de Zascita de México, empresa de seguridad privada armada: concentra la operación de las áreas en una sola plataforma.',
-    detail: 'SPA en Angular sobre SQL Server. Se integra con Control de Acceso para crear invitaciones a visitas directamente desde el sistema.',
-    stack: ['Angular', 'TypeScript', 'SQL Server'],
+    year: '2026',
+    description: 'Plataforma interna que une recursos humanos, jurídico, finanzas, comercial, operaciones y TI en un solo sistema.',
+    detail:
+      'Frontend en React con shadcn/ui y backend en NestJS sobre SQL Server. Registro con verificación de identidad (prueba de vida y comparación facial con AWS) y un servicio propio de OCR y rostro en Python con FastAPI. Generé certificados médicos dinámicos, firmas digitales y la verificación de rostros.',
+    stack: ['React', 'TypeScript', 'NestJS', 'SQL Server', 'Python', 'FastAPI', 'AWS', 'Kubernetes'],
     demo: 'https://app.zascita.com/',
+  },
+  {
+    title: 'Falcon Ventures',
+    year: '2026',
+    description: 'Sitio corporativo bilingüe para un grupo de inversión en empresas de seguridad.',
+    detail:
+      'Sitio sin framework con componentes HTML cargados por un script propio, traducción inglés/español y SEO con datos estructurados. Formularios y login con PHP serverless y MySQL, desplegado en Vercel.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'Vercel'],
   },
   {
     title: 'Zascita v1',
@@ -217,4 +226,4 @@ export const nav = [
 ]
 
 /* Tecnologías que se muestran como "stack principal" en el panel lateral */
-export const mainStack = ['Laravel', 'Angular', 'React', 'Node.js', 'SQL Server', 'Azure']
+export const mainStack = ['React', 'NestJS', 'TypeScript', 'SQL Server', 'Azure', 'Laravel']

@@ -3,8 +3,8 @@
  * Una nube de 1600 partículas FIJA detrás de toda la página. Al hacer scroll
  * cambia de forma según la sección visible:
  *
- *   inicio → esfera · sobre-mi → anillo · experiencia → cubo
- *   proyectos → doble hélice · habilidades → ola · contacto → esfera
+ *   inicio → galaxia (derecha) · sobre-mi → anillo · experiencia → cubo
+ *   proyectos → doble hélice · habilidades → ola · contacto → nudo (izquierda)
  *
  * Cómo funciona el "morph":
  *  1. Al empezar calculamos las posiciones de cada forma (mismo nº de puntos).
@@ -19,7 +19,7 @@
  *
  * Rendimiento y accesibilidad:
  *  - Se carga aparte (lazy en App.tsx): Three.js no frena la carga inicial.
- *  - Con "reducir movimiento" se muestra una esfera quieta.
+ *  - Con "reducir movimiento" se muestra la galaxia quieta.
  *  - Si no hay WebGL, no se muestra nada (la página funciona igual).
  *
  * 👉 Para adaptarla: cambia COUNT, COLORS, las formas en SHAPES o el lado
@@ -27,11 +27,31 @@
  */
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useReducedMotion } from 'motion/react'
-import { Component, useEffect, useMemo, useRef, type ReactNode } from 'react'
+import { Component, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import * as THREE from 'three'
 
 const COUNT = 1600
-const COLORS = ['#4f8dff', '#3ddbc0'] // mismos tonos que --accent y --accent-2
+/*
+ * Colores de las partículas por tema (degradado de un extremo al otro).
+ * Oscuro: azul → turquesa, como --accent y --accent-2.
+ * Claro: rojos intensos, porque los tonos pastel se pierden sobre el fondo claro.
+ */
+const COLORS = {
+  dark: ['#4f8dff', '#3ddbc0'],
+  light: ['#e11d1d', '#be123c'],
+}
+
+/** true si <html> tiene la clase .dark; se actualiza al cambiar el tema. */
+function useIsDark() {
+  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
+  useEffect(() => {
+    const root = document.documentElement
+    const observer = new MutationObserver(() => setDark(root.classList.contains('dark')))
+    observer.observe(root, { attributes: true, attributeFilter: ['class'] })
+    return () => observer.disconnect()
+  }, [])
+  return dark
+}
 const GOLDEN = Math.PI * (3 - Math.sqrt(5))
 
 /** Número "aleatorio" determinista entre 0 y 1 (mismo resultado siempre). */
@@ -42,14 +62,6 @@ const hash = (n: number) => {
 
 /* Cada forma devuelve la posición [x, y, z] del punto i */
 type Shape = (i: number) => [number, number, number]
-
-const sphere: Shape = (i) => {
-  const y = 1 - (i / (COUNT - 1)) * 2
-  const r = Math.sqrt(1 - y * y)
-  const a = GOLDEN * i
-  const R = 1.7 * (1 + (hash(i) - 0.5) * 0.06)
-  return [Math.cos(a) * r * R, y * R, Math.sin(a) * r * R]
-}
 
 const torus: Shape = (i) => {
   const a = (i / COUNT) * Math.PI * 2 * 1 // alrededor del anillo
@@ -87,14 +99,41 @@ const wave: Shape = (i) => {
   return [x, y, z]
 }
 
+/* Galaxia en espiral de 3 brazos, plana y más densa en el centro */
+const galaxy: Shape = (i) => {
+  const arms = 3
+  const r = 0.12 + 1.8 * Math.sqrt(hash(i + 0.11)) // radio: más puntos cerca del centro
+  const twist = r * 2.4 // cuánto se curva cada brazo
+  const spread = ((hash(i + 0.23) - 0.5) * 0.6) / (r + 0.4) // brazos más anchos al centro
+  const a = ((i % arms) / arms) * Math.PI * 2 + twist + spread
+  const y = (hash(i + 0.91) - 0.5) * 0.18 * (2 - r) // un poco de grosor, más en el núcleo
+  return [Math.cos(a) * r, y, Math.sin(a) * r]
+}
+
+/* Nudo toroidal (2,3): un tubo de partículas que se enreda sobre sí mismo */
+const knot: Shape = (i) => {
+  const t = (i / COUNT) * Math.PI * 2
+  const p = 2
+  const q = 3
+  const r = 0.55 * (2 + Math.cos(q * t))
+  // grosor del tubo: cada punto se separa un poco de la línea central
+  const j = 0.12
+  return [
+    r * Math.cos(p * t) + (hash(i) - 0.5) * j * 2,
+    r * Math.sin(p * t) + (hash(i + 0.3) - 0.5) * j * 2,
+    -0.55 * Math.sin(q * t) + (hash(i + 0.7) - 0.5) * j * 2,
+  ]
+}
+
 /* Sección → forma, lado de la pantalla (-1 izq, 0 centro, 1 der) y opacidad */
 const SECTIONS = [
-  { id: 'inicio', shape: sphere, side: 0, opacity: 0.75, tilt: 0.3 },
+  // tilt 1.05: la galaxia es plana, así se ve casi de frente en vez de canto
+  { id: 'inicio', shape: galaxy, side: 1, opacity: 0.8, tilt: 1.05 },
   { id: 'sobre-mi', shape: torus, side: 1, opacity: 0.55, tilt: 1.1 },
   { id: 'experiencia', shape: cube, side: -1, opacity: 0.45, tilt: 0.5 },
   { id: 'proyectos', shape: helix, side: 1, opacity: 0.5, tilt: 0.2 },
   { id: 'habilidades', shape: wave, side: -1, opacity: 0.5, tilt: 0.6 },
-  { id: 'contacto', shape: sphere, side: 0, opacity: 0.6, tilt: 0.3 },
+  { id: 'contacto', shape: knot, side: -1, opacity: 0.6, tilt: 0.4 },
 ]
 
 const smoothstep = (a: number, b: number, x: number) => {
@@ -102,12 +141,12 @@ const smoothstep = (a: number, b: number, x: number) => {
   return t * t * (3 - 2 * t)
 }
 
-function Particles({ animate }: { animate: boolean }) {
+function Particles({ animate, dark }: { animate: boolean; dark: boolean }) {
   const group = useRef<THREE.Group>(null)
   const geometry = useRef<THREE.BufferGeometry>(null)
   const material = useRef<THREE.PointsMaterial>(null)
   const pointer = useRef({ x: 0, y: 0 })
-  const { viewport } = useThree()
+  const { viewport, invalidate } = useThree()
 
   // Precalculamos las posiciones de cada forma una sola vez
   const { shapes, initial, colors } = useMemo(() => {
@@ -116,16 +155,23 @@ function Particles({ animate }: { animate: boolean }) {
       for (let i = 0; i < COUNT; i++) arr.set(shape(i), i * 3)
       return arr
     })
-    const colors = new Float32Array(COUNT * 3)
-    const from = new THREE.Color(COLORS[0])
-    const to = new THREE.Color(COLORS[1])
+    return { shapes, initial: shapes[0].slice(), colors: new Float32Array(COUNT * 3) }
+  }, [])
+
+  // Pinta el degradado del tema actual directamente en el buffer de color
+  useEffect(() => {
+    const [a, b] = dark ? COLORS.dark : COLORS.light
+    const from = new THREE.Color(a)
+    const to = new THREE.Color(b)
     const c = new THREE.Color()
     for (let i = 0; i < COUNT; i++) {
       c.copy(from).lerp(to, i / COUNT)
       colors.set([c.r, c.g, c.b], i * 3)
     }
-    return { shapes, initial: shapes[0].slice(), colors }
-  }, [])
+    const attr = geometry.current?.attributes.color
+    if (attr) attr.needsUpdate = true
+    invalidate() // redibuja también en modo "demand" (reducir movimiento)
+  }, [dark, colors, invalidate])
 
   useEffect(() => {
     if (!animate) return
@@ -180,7 +226,9 @@ function Particles({ animate }: { animate: boolean }) {
     const narrow = viewport.width < 6 // pantallas estrechas (móvil): menos desplazamiento
     const targetX = side * viewport.width * (narrow ? 0.18 : 0.26)
     g.position.x += (targetX - g.position.x) * k
-    const opacity = (S.opacity + (N.opacity - S.opacity) * mix) * (narrow && index > 0 ? 0.6 : 1)
+    // En claro los puntos pierden fuerza sobre el fondo: subimos la opacidad un 50 %
+    const boost = dark ? 1 : 1.5
+    const opacity = Math.min(1, (S.opacity + (N.opacity - S.opacity) * mix) * (narrow && index > 0 ? 0.6 : 1) * boost)
     mat.opacity += (opacity - mat.opacity) * k
 
     const tilt = S.tilt + (N.tilt - S.tilt) * mix
@@ -197,7 +245,8 @@ function Particles({ animate }: { animate: boolean }) {
           <bufferAttribute attach="attributes-position" args={[initial, 3]} />
           <bufferAttribute attach="attributes-color" args={[colors, 3]} />
         </bufferGeometry>
-        <pointsMaterial ref={material} size={0.03} vertexColors transparent opacity={1} sizeAttenuation depthWrite={false} />
+        {/* En claro los puntos son algo más grandes para que destaquen sobre el fondo */}
+        <pointsMaterial ref={material} size={dark ? 0.03 : 0.036} vertexColors transparent opacity={1} sizeAttenuation depthWrite={false} />
       </points>
     </group>
   )
@@ -217,6 +266,7 @@ class WebGLBoundary extends Component<{ children: ReactNode }, { failed: boolean
 export default function Scene3D() {
   const reduceMotion = useReducedMotion()
   const animate = !reduceMotion
+  const dark = useIsDark()
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden>
@@ -225,10 +275,10 @@ export default function Scene3D() {
           dpr={[1, 1.5]}
           camera={{ position: [0, 0, 5], fov: 45 }}
           gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}
-          // "demand" = solo dibuja una vez (esfera quieta) si se pidió menos movimiento
+          // "demand" = solo dibuja una vez (galaxia quieta) si se pidió menos movimiento
           frameloop={animate ? 'always' : 'demand'}
         >
-          <Particles animate={animate} />
+          <Particles animate={animate} dark={dark} />
         </Canvas>
       </WebGLBoundary>
     </div>

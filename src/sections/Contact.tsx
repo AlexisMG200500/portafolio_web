@@ -32,7 +32,7 @@ export function Contact() {
         <motion.h2 variants={fadeUp} id="contacto-title" className="text-halo text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
           ¿Construimos algo <span className="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">juntos?</span>
         </motion.h2>
-        <motion.p variants={fadeUp} className="text-halo mt-5 max-w-md text-fg/80 text-pretty">
+        <motion.p variants={fadeUp} className="text-halo mt-5 max-w-md text-base font-medium text-fg text-pretty sm:text-lg">
           Estoy abierto a ofertas de trabajo y colaboraciones. Escríbeme por donde prefieras.
         </motion.p>
 

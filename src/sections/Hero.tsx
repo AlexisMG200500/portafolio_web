@@ -56,7 +56,7 @@ export function Hero({ ready }: { ready: boolean }) {
         <motion.p variants={fadeUp} className="text-halo mt-5 font-mono text-xs tracking-[0.25em] text-fg/80 uppercase sm:text-sm">
           {profile.role}
         </motion.p>
-        <motion.p variants={fadeUp} className="text-halo mt-5 max-w-xl text-base text-fg/85 text-pretty sm:text-lg">
+        <motion.p variants={fadeUp} className="text-halo mt-5 max-w-xl text-base text-fg/90 text-pretty sm:text-lg">
           {profile.tagline}
         </motion.p>
 
