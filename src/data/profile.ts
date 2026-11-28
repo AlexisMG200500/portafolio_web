@@ -187,7 +187,8 @@ export const projects: Project[] = [
     title: 'Proyecto integrador',
     description: 'Proyecto integrador de 5.º cuatrimestre.',
     stack: ['Laravel', 'MySQL', 'JavaScript'],
-    repo: 'https://github.com/Alexis200500/Proyectodeintegradora-5-Cuatrimestre',
+    demo: 'https://integrador.alexismoralesgomez.com/',
+    repo: 'https://github.com/AlexisMG200500/proyecto_integrador',
   },
 ]
 
